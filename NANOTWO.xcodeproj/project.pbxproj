@@ -18,6 +18,12 @@
 		90486E112BF5A3A900656B7B /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90486E102BF5A3A900656B7B /* backgroundMusic.mp3 */; };
 		90486E122BF5A3A900656B7B /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90486E102BF5A3A900656B7B /* backgroundMusic.mp3 */; };
 		90486E132BF5A3A900656B7B /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90486E102BF5A3A900656B7B /* backgroundMusic.mp3 */; };
+		90486EC82BFDDCD500656B7B /* suarakintsugi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90486EC72BFDDCD500656B7B /* suarakintsugi.mp3 */; };
+		90486EC92BFDDCD500656B7B /* suarakintsugi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90486EC72BFDDCD500656B7B /* suarakintsugi.mp3 */; };
+		90486ECA2BFDDCD500656B7B /* suarakintsugi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90486EC72BFDDCD500656B7B /* suarakintsugi.mp3 */; };
+		90486ECC2BFDF6AB00656B7B /* cat_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90486ECB2BFDF6AB00656B7B /* cat_sound.mp3 */; };
+		90486ECD2BFDF6AB00656B7B /* cat_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90486ECB2BFDF6AB00656B7B /* cat_sound.mp3 */; };
+		90486ECE2BFDF6AB00656B7B /* cat_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90486ECB2BFDF6AB00656B7B /* cat_sound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +56,8 @@
 		90486DF12BF4ECEF00656B7B /* NANOTWOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NANOTWOUITests.swift; sourceTree = "<group>"; };
 		90486DF32BF4ECEF00656B7B /* NANOTWOUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NANOTWOUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		90486E102BF5A3A900656B7B /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = backgroundMusic.mp3; path = ../../../Downloads/backgroundMusic.mp3; sourceTree = "<group>"; };
+		90486EC72BFDDCD500656B7B /* suarakintsugi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = suarakintsugi.mp3; sourceTree = "<group>"; };
+		90486ECB2BFDF6AB00656B7B /* cat_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cat_sound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +108,9 @@
 		90486DD32BF4ECED00656B7B /* NANOTWO */ = {
 			isa = PBXGroup;
 			children = (
+				90486ECB2BFDF6AB00656B7B /* cat_sound.mp3 */,
 				90486E102BF5A3A900656B7B /* backgroundMusic.mp3 */,
+				90486EC72BFDDCD500656B7B /* suarakintsugi.mp3 */,
 				90486DD42BF4ECED00656B7B /* NANOTWOApp.swift */,
 				90486DD62BF4ECED00656B7B /* ContentView.swift */,
 				90486DD82BF4ECED00656B7B /* Item.swift */,
@@ -240,6 +250,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				90486DDE2BF4ECEE00656B7B /* Preview Assets.xcassets in Resources */,
+				90486EC82BFDDCD500656B7B /* suarakintsugi.mp3 in Resources */,
+				90486ECC2BFDF6AB00656B7B /* cat_sound.mp3 in Resources */,
 				90486DDB2BF4ECEE00656B7B /* Assets.xcassets in Resources */,
 				90486E112BF5A3A900656B7B /* backgroundMusic.mp3 in Resources */,
 			);
@@ -249,7 +261,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90486ECD2BFDF6AB00656B7B /* cat_sound.mp3 in Resources */,
 				90486E122BF5A3A900656B7B /* backgroundMusic.mp3 in Resources */,
+				90486EC92BFDDCD500656B7B /* suarakintsugi.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +271,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90486ECE2BFDF6AB00656B7B /* cat_sound.mp3 in Resources */,
 				90486E132BF5A3A900656B7B /* backgroundMusic.mp3 in Resources */,
+				90486ECA2BFDDCD500656B7B /* suarakintsugi.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -48,17 +48,18 @@ struct ContentView: View {
                         .padding()
                 }
                 
-                if showResetButton {
-                    Button(action: {
-                        resetIcons()
-                    }) {
-                        Text("Reset")
-                            .font(.system(size: 24))
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(10)
-                    }
-                }
+//                if showResetButton {
+//                    Button(action: {
+//                        resetIcons()
+//                    }) {
+//                        Text("Reset")
+//                            .font(.system(size: 24))
+//                            .padding()
+//                            .background(Color.white)
+//                            .cornerRadius(10)
+//                    }
+//                }
+                
             }
             .padding()
             
@@ -115,6 +116,12 @@ struct ContentView: View {
                                 checkCollision()
                             }
                     )
+                    .gesture(
+                                        TapGesture(count: 2)
+                                            .onEnded {
+                                                resetIcons()
+                                            }
+                                    )
             }
             ForEach(newIcons2.indices, id: \.self) { index in
                 Image(newIcons2[index].image)
@@ -137,6 +144,12 @@ struct ContentView: View {
                                 checkCollision()
                             }
                     )
+//                    .gesture(
+//                                        TapGesture(count: 2)
+//                                            .onEnded {
+//                                                resetIcons()
+//                                            }
+//                                    )
             }
         }
         .onAppear {
@@ -209,21 +222,25 @@ struct ContentView: View {
             showIcon1 = false
             showIcon2 = false
             transformIcons(&showIcon1, &showIcon2, offset1: dragOffset1, offset2: dragOffset2, newIcon: ("KiriKananAtas", .red))
+            SoundEffectPlayer.shared.playSoundEffect(named: "suarakintsugi")
         }
         if showIcon3, showIcon4, checkIntersect(offset1: dragOffset3, offset2: dragOffset4) {
             showIcon3 = false
             showIcon4 = false
             transformIcons(&showIcon3, &showIcon4, offset1: dragOffset3, offset2: dragOffset4, newIcon: ("KiriKananBawah", .yellow))
+            SoundEffectPlayer.shared.playSoundEffect(named: "suarakintsugi")
         }
         if showIcon1, showIcon3, checkIntersect(offset1: dragOffset1, offset2: dragOffset3) {
             showIcon1 = false
             showIcon3 = false
             transformIcons(&showIcon1, &showIcon3, offset1: dragOffset1, offset2: dragOffset3, newIcon: ("KiriAtasBawah", .orange))
+            SoundEffectPlayer.shared.playSoundEffect(named: "suarakintsugi")
         }
         if showIcon2, showIcon4, checkIntersect(offset1: dragOffset2, offset2: dragOffset4) {
             showIcon2 = false
             showIcon4 = false
             transformIcons(&showIcon2, &showIcon4, offset1: dragOffset2, offset2: dragOffset4, newIcon: ("KananAtasBawah", .blue))
+            SoundEffectPlayer.shared.playSoundEffect(named: "suarakintsugi")
         }
         
         for i in 0..<newIcons.count {
@@ -240,6 +257,7 @@ struct ContentView: View {
                 } else if (newIcons[i].image == "KananAtasKiriKananBawah") {
                     transformNewIconWithOriginal(index1: i, offset2: dragOffset1, newIcon: ("KiriKananAtasKiriKananBawah", .green))
                 }
+                SoundEffectPlayer.shared.playSoundEffect(named: "suarakintsugi")
             }
             if showIcon2, checkIntersect(offset1: newIcons[i].offset, offset2: dragOffset2) {
                 showIcon2 = false
@@ -254,6 +272,7 @@ struct ContentView: View {
                 } else if (newIcons[i].image == "KiriAtasKiriKananBawah") {
                     transformNewIconWithOriginal(index1: i, offset2: dragOffset1, newIcon: ("KiriKananAtasKiriKananBawah", .green))
                 }
+                SoundEffectPlayer.shared.playSoundEffect(named: "suarakintsugi")
             }
             if showIcon3, checkIntersect(offset1: newIcons[i].offset, offset2: dragOffset3) {
                 showIcon3 = false
@@ -268,6 +287,7 @@ struct ContentView: View {
                 } else if (newIcons[i].image == "KiriKananAtasKananBawah") {
                     transformNewIconWithOriginal(index1: i, offset2: dragOffset1, newIcon: ("KiriKananAtasKiriKananBawah", .green))
                 }
+                SoundEffectPlayer.shared.playSoundEffect(named: "suarakintsugi")
             }
             if showIcon4, checkIntersect(offset1: newIcons[i].offset, offset2: dragOffset4) {
                 showIcon4 = false
@@ -282,6 +302,7 @@ struct ContentView: View {
                 } else if (newIcons[i].image == "KiriKananAtasKiriBawah") {
                     transformNewIconWithOriginal(index1: i, offset2: dragOffset1, newIcon: ("KiriKananAtasKiriKananBawah", .green))
                 }
+                SoundEffectPlayer.shared.playSoundEffect(named: "suarakintsugi")
             }
             if !newIcons2.isEmpty, checkIntersect(offset1: newIcons[i].offset, offset2: newIcons2[i].offset) {
                 newIcons2 = []
@@ -294,6 +315,7 @@ struct ContentView: View {
                 } else if (newIcons[i].image == "KiriAtasBawah") {
                     transformNewIconWithOriginal(index1: i, offset2: dragOffset1, newIcon: ("KiriKananAtasKiriKananBawah", .green))
                 }
+                SoundEffectPlayer.shared.playSoundEffect(named: "suarakintsugi")
             }
         }
     }
@@ -301,7 +323,7 @@ struct ContentView: View {
 //    FUNCTION COMBINATION KEDUA CUMAN HORIZONTAL AJA
     
     private func checkIntersect(offset1: CGSize, offset2: CGSize) -> Bool {
-        let threshold: CGFloat = 50
+        let threshold: CGFloat = 180
         return abs(offset1.width - offset2.width) < threshold && abs(offset1.height - offset2.height) < threshold
     }
     
@@ -372,6 +394,26 @@ class MusicPlayer {
     func unmuteBackgroundMusic() {
         guard let player = audioPlayer else { return }
         player.volume = volumeBeforeMute
+    }
+}
+
+class SoundEffectPlayer {
+    static let shared = SoundEffectPlayer()
+    var audioPlayer: AVAudioPlayer?
+    
+    func playSoundEffect(named soundName: String) {
+        guard let path = Bundle.main.path(forResource: "suarakintsugi", ofType: "mp3") else {
+            return
+        }
+        
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        } catch {
+            print("Error playing sound effect: \(error)")
+        }
     }
 }
 
